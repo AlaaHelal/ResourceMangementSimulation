@@ -26,15 +26,20 @@ public abstract class Unit : MonoBehaviour,
 
     private void Start()
     {
-
+        //Set the team color if the MainManager exist.
+        //The developer might want to test the unit in a scene without MainManager.
+        if (MainManager.Instance != null)
+        {
+            SetColor(MainManager.Instance.teamColor);
+        }
     }
 
-    void SetColor(Color c)
+    void SetColor(Color color)
     {
         var colorHandler = GetComponentInChildren<ColorHandler>();
         if (colorHandler != null)
         {
-            colorHandler.SetColor(c);
+            colorHandler.SetColor(color);
         }
     }
 
